@@ -1,12 +1,10 @@
 ##Comments that give an overall description of what your function do:
 ##This function caches the inverse of a matrix for faster computation
 ##caching the inverse is better than computing the inversion repeatedly
-##solve() is a great function for this assignment once you know what it does.        
+##solve() is a great function for this assignment once you know what it does.
 ##You need somewhat intermediate programming skills to do this assignment 
-#ask a programmer friend to help you and Read 'An introduction to R' or/and 
-##'R cookbook', they have great examples and Chamber's Statistics and Computing.
-##If you have basic programming skills,
-##you need at least 20h to complete this assignment
+##If you have basic programming skills you need at least 
+##20h to complete this assignment.  Use the examples given as template.
 
 ##Write a short comment describing this function[sic]:      
 ##first you have to create a special "matrix" object that can cache its inverse 
@@ -22,7 +20,7 @@ makeCacheMatrix <- function(x = matrix()) {
         ## get matrix value
         get <- function() x
         
-        ##set inversion of matrix
+        ##set inversion of matrix with solve
         setinverse <- function(solve) m <<- solve
         getinverse <- function() m
         
@@ -32,7 +30,7 @@ makeCacheMatrix <- function(x = matrix()) {
              getinverse = getinverse)
 }
 
-##Computing the inverse of the Matrix above. If the inverse has not already 
+##Now compute the inverse of the Matrix above. If the inverse has not already 
 ##been calculated it will retrieve it from the cache. 
 
 cacheSolve<- function(x, ...) {
@@ -45,7 +43,7 @@ cacheSolve<- function(x, ...) {
                 return(m)
         }
         
-        ##if so, get inverse
+        ##if so, get inverse with solve()
         m <- solve(x$get())
         x$setinverse(m)
         m
