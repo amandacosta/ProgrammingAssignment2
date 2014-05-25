@@ -4,27 +4,25 @@
 ##solve() is a great function for this assignment once you know what it does.
 ##You need somewhat intermediate programming skills to do this assignment 
 ##If you have basic programming skills you need at least 
-##20h to complete this assignment.  Use the examples given as template.
+##20h to complete this assignment. I used the examples given as template.
 
 ##Write a short comment describing this function[sic]:      
 ##first you have to create a special "matrix" object that can cache its inverse 
 
 makeCacheMatrix <- function(x = matrix()) {
-        ##set matrix object value
+        ##set original matrix value
         m <- NULL
         set <- function(y) {
                 x <<- y
                 m <<- NULL
         }
         
-        ## get matrix value
+        ## return original matrix value
         get <- function() x
         
-        ##set inversion of matrix with solve
+        ##find the inverse of the matrix (with solve) and cache it
         setinverse <- function(solve) m <<- solve
         getinverse <- function() m
-        
-        ##get inversion of matrix 
         list(set = set, get = get,
              setinverse = setinverse,
              getinverse = getinverse)
@@ -34,16 +32,16 @@ makeCacheMatrix <- function(x = matrix()) {
 ##been calculated it will retrieve it from the cache. 
 
 cacheSolve<- function(x, ...) {
-        ##get the inversion
+        ##returns the matrix inverse
         m <- x$getinverse()
         
-        ##checking the cache is being returned
+        ##check if the reverse has already been calculated
         if(!is.null(m)) {
                 message("getting cached data")
                 return(m)
         }
         
-        ##if so, get inverse with solve()
+        ##then retreive the cache
         m <- solve(x$get())
         x$setinverse(m)
         m
